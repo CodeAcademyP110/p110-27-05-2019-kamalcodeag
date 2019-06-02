@@ -1,39 +1,38 @@
-﻿namespace HomeWork
+﻿using System;
+using System.Collections.Generic;
+
+namespace HomeWork
 {
     #region HomeWork
 
     public class PhoneBook
     {
-        private int counter = 0;
-        public Contact[] contacts = new Contact[30]; // {Name = "a", Number = "123"}
-
-        public void AddContact(Contact c)
-        {
-            contacts[counter++] = c;
-        }
+        public Dictionary<string, string> contacts = new Dictionary<string, string>();
 
         public string this[string name]
         {
             get
             {
-                foreach(var cont in contacts)
+                foreach (KeyValuePair<string, string> c in contacts)
                 {
-                    if(cont != null && name == cont.Name)
+                    if (c.Key != null && c.Value != null && c.Key != name) //third part in the condition ???
                     {
-                        return cont.Number;
+                        return c.Key + " " + c.Value;
                     }
                 }
-                
-                return "Sorry, the name you searched for does not exist in the phonebook";
+                return "";
             }
-            //set
-            //{
-            //    if(contacts[counter] != null)
-            //    {
-            //        contacts[counter].Name = name;
-            //        contacts[counter++].Number = value;
-            //    }
-            //}
+            set
+            {
+                try
+                {
+                    contacts.Add(name, value);
+                }
+                catch
+                {
+                    throw new ArgumentException("***Sorry, the key and value pair you want to input already exists.***");
+                }
+            }
         }
     }
 

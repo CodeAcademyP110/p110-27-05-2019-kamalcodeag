@@ -54,26 +54,15 @@ namespace HomeWork
 
             #region HomeWork
 
+            //Debug impossible
             PhoneBook phoneBook = new PhoneBook();
-
-            Contact contact = new Contact
-            {
-                Name = "AliBaba",
-                Number = "12356789"
-            };
-            phoneBook.AddContact(contact);
-            Contact contact2 = new Contact
-            {
-                Name = "AnqutBaba",
-                Number = "987654321"
-            };
-            phoneBook.AddContact(contact2);
-
+            phoneBook["AliBaba"] = "123456789";
             //phoneBook["AliBaba"] = "123456789";
-            //phoneBook["AnqutBaba"] = "987654321";
+            phoneBook["AnqutBaba"] = "987654321";
 
-            Console.WriteLine($"Phone number: {phoneBook["AliBaba"]}");
-            Console.WriteLine($"Phone number: {phoneBook["AnqutBaba"]}");
+
+            Console.WriteLine(phoneBook["AliBaba"]);
+            Console.WriteLine(phoneBook["AnqutBaba"]);
 
             #endregion
         }
